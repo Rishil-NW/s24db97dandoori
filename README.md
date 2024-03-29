@@ -1,7 +1,7 @@
 # s24db97dandoori
 created new repo for lab10
 
-Hosted at: https://s24wb97dandoori.onrender.com
+Hosted at: https://s24db97dandoori.onrender.com
 
 Class : Robots
 

@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var RobotsRouter = require('./routes/Robots');
 var gridRouter = require('./routes/grid');
 var pickRouter = require('./routes/pick');
+var resourceRouter = require('./routes/resource');
  
 var app = express();
  
@@ -27,22 +28,21 @@ app.use('/users', usersRouter);
 app.use('/Robots', RobotsRouter);
 app.use('/grid', gridRouter);
 app.use('/pick', pickRouter);
+app.use('/resource', resourceRouter);
  
+var Robots = require("./models/Robots");
 require('dotenv').config();
 var mongoose = require('mongoose');
-const connectionString = process.env.MONGO_CON
+const connectionString = process.env.MONGO_CON;
 mongoose.connect(connectionString);
- 
+//Get the default connection
 var db = mongoose.connection;
 //Bind connection to error event
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
- 
 db.once("open", function(){
 console.log("Connection to DB succeeded");
  
 });
- 
- 
  
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -61,3 +61,33 @@ app.use(function(err, req, res, next) {
 });
  
 module.exports = app;
+ 
+async function recreateDB(){
+  // Delete everything
+  await Robots.deleteMany();
+ 
+  let instance1 = new Robots({Robot_type: 'Human', price: 100000,  manufactured:'India'});
+  instance1.save().then(doc=>{
+  console.log("First object saved")}
+  ).catch(err=>{
+  console.error(err)
+  });
+ 
+ 
+  let instance2 = new Robots({Robot_type: 'Dog', price: 15000, manufactured:'China'});
+  instance2.save().then(doc=>{
+  console.log("Second object saved")}
+  ).catch(err=>{
+  console.error(err)
+  });
+ 
+ 
+  let instance3 = new Robots({Robot_type: 'Rabbit', price: 10000, manufactured:'USA'});
+  instance3.save().then(doc=>{
+  console.log("Third object saved")}
+  ).catch(err=>{
+  console.error(err)
+  });
+  }
+  let reseed = true;
+  if (reseed) {recreateDB();}

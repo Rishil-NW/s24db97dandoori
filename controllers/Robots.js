@@ -84,4 +84,44 @@ exports.Robots_create_post = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
     };
+    // Handle Costume delete on DELETE.
+exports.Robots_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await Robots.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
+    // Handle a show one view with id specified by query
+    exports.Robots_view_one_Page = async function(req, res) {
+        console.log("single view for id " + req.query.id)
+        try{
+        result = await Robots.findById( req.query.id)
+        res.render('Robotsdetail',
+        { title: 'Robots Detail', toShow: result });
+        }
+        catch(err){
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+        }
+        };
+        // Handle building the view for creating a costume.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.Robots_create_Page = function(req, res) {
+    console.log("create view")
+    try{
+    res.render('Robotscreate', { title: 'Robots Create'});
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+    
+    
     

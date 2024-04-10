@@ -1,0 +1,24 @@
+extends layout
+block content
+  h1= title
+ 
+  if toShow == null
+    h2 No instance to show
+  else
+    - let Robotsid = toShow._id
+    - let Robot_type = toShow.Robot_type
+    - let price = toShow.price
+    - let manufactured = toShow.manufactured
+    div
+      div.row
+        div.RobotsAttr.mr-3 Robots ID is:
+        div #{Robotsid}
+      div.row
+        div.RobotsAttr.mr-3 Robot Type is:
+        div #{Robot_type}
+      div.row
+        div.RobotsAttr.mr-3 Robot price is:
+        div #{price}
+      div.row
+        div.RobotsAttr.mr-3 Robot manufactured is:
+        div #{manufactured}

@@ -1,20 +1,23 @@
 var express = require('express');
+const Robots_controllers= require('../controllers/food');
 var router = express.Router();
-// Require controller modules.
-var api_controller = require('../controllers/api');
-var Robots_controller = require('../controllers/Robots');
+/* GET food */
 
-/// API ROUTE ///
-// GET resource detail.
-router.get('/detail/:id', Robots_controller.Robots_view_one_Page);
- 
-// GET create Robots page
-router.get('/create', Robots_controller.Robots_create_Page);
- 
-// GET update Robots page
-router.get('/update/:id', Robots_controller.Robots_update_Page);
- 
-// GET delete Robots page
-router.get('/delete/:id', Robots_controller.Robots_delete_Page);
+router.get('/', Robots_controllers.food_view_all_Page);
+
+router.put('/', function(req, res) {
+    if(req.body.checkboxsale)toUpdate.sale = true;
+    else toUpdate.same = false;
+    })
+router.get('/', Robots_controllers.food_delete );
+/* GET detail food page */
+router.get('/detail', Robots_controllers.food_view_one_Page);
+/* GET create food page */
+router.get('/create', Robots_controllers.food_create_Page);
+/* GET create update page */
+router.get('/update', Robots_controllers.food_update_Page);
+/* GET delete food page */
+router.get('/delete', Robots_controllers.food_delete_Page);
+
 
 module.exports = router;

@@ -9,20 +9,20 @@ block content
         - let Robotsid = toShow._id
         - let Robot_type = toShow.Robot_type
         - let price = toShow.price
-        - let manufactured  = toShow.manufactured
+        - let manufactured = toShow.
         div.row(class='mb-2')
             div.mr-1 ID is
                 div #{Robotsid}
                 - let actionid = "/resource/Robots/" + Robotsid
                 form(id='RobotsForm', action= actionid, method="POST")
                     div.form-group
-                        label.RobotsAttr(for='Robot_type') Robot Type
-                        input#Robot_type(type='text' name='Robot_type', value= Robot_type)
+                        label.RobotsAttr(for='Robots_type') Robots Type
+                        input#Robots_type(type='text' name='Robots_type', value= Robots_type)
                     div.form-group
-                        label.RobotsAttr(for='price') price
+                        label.RobotsAttr(for='price')  price
                         input#price(type='number' name='price', value= price)
                     div.form-group
-                        label.RobotsAttr(for='manufactured') manufactured
+                        label.RobotsAttr(for='manufactured') Robots manufactured
                         input#manufactured(type='text' name='manufactured', value= manufactured)
                     input(type="submit")
     script.

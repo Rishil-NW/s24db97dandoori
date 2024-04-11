@@ -2,10 +2,7 @@ extends layout
 
 block content
   h1= title
-  style. 
-     body{
-       background-color:red;
-      }
+ 
   form(id='RobotsForm', action="/resource/Robots", method="POST")
     div.form-group
       label.RobotsAttr(for='Robot_type') Robot type

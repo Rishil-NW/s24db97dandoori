@@ -8,7 +8,7 @@ var Robots_controller = require('../controllers/Robots');
 router.get('/', api_controller.api);
 /// Robots ROUTES ///
 // POST request for creating a Robots. 
-router.post('/Robots', Robots_controller.Robots_create_post);
+router.post('/RobotsCreate', Robots_controller.Robots_create_post);
 // PUT request to update Robots.
 router.put('/Robots/:id', Robots_controller.Robots_update_put);
 // GET request for one Robots.

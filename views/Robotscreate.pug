@@ -2,7 +2,7 @@ extends layout
  
 block content
   h1= title
-  form(id='RobotsForm', action="/resource/Robots", method="POST")
+  form(id='RobotsForm', action="/resource/RobotsCreate", method="POST")
     div.form-group
       label.RobotsAttr(for='Robot_type') Robot type
       input#Robot_type(type='text', name='Robot_type')
@@ -30,4 +30,4 @@ block content
         // TODO handle error
         alert("Save failed " + error );
       });
-    });ss
+    });

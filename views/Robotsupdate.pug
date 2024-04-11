@@ -7,26 +7,26 @@ block content
         h2 No instance to update
     else
         - let Robotsid = toShow._id
-        - let Robot_type = toShow.Robot_type
-        - let price = toShow.price
-        - let manufactured = toShow.
+        - let Robot_type = toShow Robot_type
+        - let price = toShow price
+        - let manufactured = toShow manufactured
         div.row(class='mb-2')
             div.mr-1 ID is
-                div #{Robotsid}
-                - let actionid = "/resource/Robots/" + Robotsid
-                form(id='RobotsForm', action= actionid, method="POST")
+                div # Robotsid}
+                - let actionid = "/resource Robots/" + Robotsid
+                form(id= RobotsForm', action= actionid, method="POST")
                     div.form-group
-                        label.RobotsAttr(for='Robots_type') Robots Type
-                        input#Robots_type(type='text' name='Robots_type', value= Robots_type)
+                        label RobotsAttr(for= Robot_type') Robot Type
+                        input Robot_type(type='text' name= Robot_type', value= Robot_type)
                     div.form-group
-                        label.RobotsAttr(for='price')  price
-                        input#price(type='number' name='price', value= price)
+                        label RobotsAttr(for= price') price
+                        input price(type='text' name= price', value= price)
                     div.form-group
-                        label.RobotsAttr(for='manufactured') Robots manufactured
-                        input#manufactured(type='text' name='manufactured', value= manufactured)
+                        label RobotsAttr(for= manufactured') manufactured
+                        input manufactured(type='number' name= manufactured', value= manufactured)
                     input(type="submit")
     script.
-        document.forms['RobotsForm'].addEventListener('submit', (event) => {
+        document.forms[ RobotsForm'].addEventListener('submit', (event) => {
             event.preventDefault();
             // TODO do something here to show user that form is being submitted
             fetch(event.target.action, {

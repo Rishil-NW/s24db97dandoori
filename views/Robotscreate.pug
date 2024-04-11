@@ -1,23 +1,23 @@
 extends layout
- 
+
 block content
   h1= title
   style. 
       body{
         background-color:red;
       }
-  form(id='RobotsForm', action="/resource/RobotsCreate", method="POST")
+  form(id='RobotsForm', action="/resource/Robots", method="POST")
     div.form-group
       label.RobotsAttr(for='Robot_type') Robot type
       input#Robot_type(type='text', name='Robot_type')
     div.form-group
-      label.RobotsAttr(for='price') Robot price
-      input#sprice(type='number', name='price')
+      label.RobotsAttr(for='price') price
+      input#price(type='number', name='price')
     div.form-group
-      label.RobotsAttr(for='manufactured') Robot manufactured
-      input#cost(type='text', name='manufactured')
+      label.RobotsAttr(for='manufactured') manufactured
+      input#manufactured(type='text', name='manufactured')
     input(type="submit")
- 
+
   script.
     document.forms['RobotsForm'].addEventListener('submit', (event) => {
       event.preventDefault();
@@ -34,4 +34,4 @@ block content
         // TODO handle error
         alert("Save failed " + error );
       });
-    });
+    });ss

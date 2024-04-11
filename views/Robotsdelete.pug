@@ -5,32 +5,32 @@ block content
     if (toShow == null)
         h2 No instance to delete
     else
-        - let Robotid = toShow._id
+        - let Robotsid = toShow._id
         - let Robot_type = toShow.Robot_type
         - let price = toShow.price
         - let manufactured = toShow.manufactured
-        - let actionid = "/resource/Robots/" + Robotid
+        - let actionid = "/resource/Robots/" + Robotsid
         script.
-            let actionid = "#{actionid}";
+            let actionid = "#{actionid}"
         div
             div.row
-                div(class='RobotsAttr mr-3') Robot ID is:
-                div #{Robotid}
+                div(class='RobotsAttr mr-3') Robots ID is:
+                div #{Robotsid}
             div.row
-                div(class='RobotsAttr mr-3') Robot Type is:
-                div #{Robot_type}
+                div(class='RobotsAttr mr-3') Robots Type is:
+                div #{Robots_type}
             div.row
-                div(class='RobotsAttr mr-3') Robot price is:
+                div(class='RobotsAttr mr-3') Robots Size is:
                 div #{price}
             div.row
-                div(class='RobotsAttr mr-3') manufactured is:
-                div #{manufactured}
+                div(class='RobotsAttr mr-3') Robots Price is:
+                div #{manufacturted}
         button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
         button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
         
     script.
         function cancel() {
-            // Go back to the home page for the Robot collection
+            // Go back to the home page for the Robots collection
             window.location.href='/Robots'
         }
     script.

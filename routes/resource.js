@@ -9,6 +9,8 @@ router.get('/', api_controller.api);
 /// Robots ROUTES ///
 // POST request for creating a Robots. 
 router.post('/RobotsCreate', Robots_controller.Robots_create_post);
+//delete
+router.delete('/Robots', Robots_controller.Robots_delete);
 // PUT request to update Robots.
 router.put('/Robots/:id', Robots_controller.Robots_update_put);
 // GET request for one Robots.

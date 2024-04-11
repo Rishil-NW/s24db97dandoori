@@ -55,8 +55,8 @@ exports.Robots_list = async function (req, res) {
 };
 exports.Robots_view_all_Page = async function (req, res) {
     try {
-        thefoods = await Robots.find();
-        res.render('Robots', { title: 'Robots Search Results', results: thefoods });
+        theRobots = await Robots.find();
+        res.render('Robots', { title: 'Robots Search Results', results: theRobots });
     }
     catch (err) {
         res.status(500);
@@ -134,6 +134,19 @@ exports.Robots_update_Page = async function (req, res) {
         res.send(`{'error': '${err}'}`);
     }
 };
+// Handle a delete one view with id from query
+exports.Robots_delete_Page = async function(req, res) {
+    console.log("Delete view for id " + req.query.id)
+    try{
+    result = await Robots.findById(req.query.id)
+    res.render('Robotsdelete', { title: 'Robots Delete', toShow:
+    result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
 
 
 

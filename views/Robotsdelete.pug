@@ -1,0 +1,49 @@
+extends layout
+
+block content
+    h1= title
+    if (toShow == null)
+        h2 No instance to delete
+    else
+        - let Robotsid = toShow._id
+        - let Robot_type = toShow.Robot_type
+        - let price = toShow.price
+        - let manufactured = toShow.manufactured
+        - let actionid = "/resource/Robots/" + Robotsid
+        script.
+            let actionid = "#{actionid}"; // Ensure actionid is a string
+        div
+            div.row
+                div(class='RobotsAttr mr-3') Robot ID is:
+                    div #{Robotsid}
+            div.row
+                div(class='RobotsAttr mr-3') Robot Type is:
+                    div #{Robot_type}
+            div.row
+                div(class='RobotsAttr mr-3') Robot price is:
+                    div #{price}
+            div.row
+                div(class='RobotsAttr mr-3') Robot manufactured is:
+                    div #{manufactured}
+            button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+            button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+        script.
+            function cancel() {
+                // Go back to the home page for the Robot collection
+                window.location.href='/Robots'
+            }
+            function deleteOnid() {
+                console.log("starting delete")
+                // delete first
+                fetch(actionid, {
+                    method: 'DELETE' // Don't need a body for the delete
+                }).then((resp) => {
+                    return resp.text(); // or resp.text() or whatever the server sends
+                }).then((body) => {
+                    alert("Delete succeeded")
+                    // TODO handle body
+                }).catch((error) => {
+                    // TODO handle error
+                    alert("Delete failed " + error )
+                });
+            }

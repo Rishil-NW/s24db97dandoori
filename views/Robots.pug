@@ -10,7 +10,7 @@ block content
         - let destination = `/Robots/update?id=${item._id}`
         - let detail = `/Robots/detail?id=${item._id}`
         - let deletePath = `/Robots/delete?id=${item._id}`
-        .row-sm-2.m-1 Item #{item.Robot_type}(#{item.price}) is #{item.manufactured}
+        .row-sm-2.m-1 Item: #{item.Robot_type}, price is:#{item.price}, manufactured in #{item.manufactured}
           button.btn.btn-primary.ml-1(onclick=`dispatch('${destination}')`) update
           button.btn.btn-primary.ml-1(onclick=`dispatch('${deletePath}')`) delete
           button.btn.btn-primary.ml-1(onclick=`dispatch('${detail}')`) detail

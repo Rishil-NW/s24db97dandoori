@@ -1,19 +1,22 @@
-
 extends layout
-
+ 
 block content
   h1= title
-  - var results = [{Robot_type: "Human", price: 100000, manufactured: "India"},{Robot_type: "Dog", price: 15000, manufactured: "China"},{Robot_type: "Rabbit", price: 10000, manufactured : "USA"}]
-
+  - let items = results;
+  a.btn.btn-primary(href="/Robots/create") Create Robot items
   .container-fluid
     .row
-      each f,index in results 
-        .col-sm-2(onclick=`buy(${index})`)
-          | #{f.Robot_type}, $#{f.price}, #{f.manufactured}
-          
+      each item in items
+        - let destination = `/Robots/update?id=${item._id}`
+        - let detail = `/Robots/detail?id=${item._id}`
+        - let deletePath = `/Robots/delete?id=${item._id}`
+        .row-sm-2.m-1 Item #{item.Robot_type}(#{item.price}) is #{item.manufactured}
+          button.btn.btn-primary.ml-1(onclick=`dispatch('${destination}')`) update
+          button.btn.btn-primary.ml-1(onclick=`dispatch('${deletePath}')`) delete
+          button.btn.btn-primary.ml-1(onclick=`dispatch('${detail}')`) detail
+         
+ 
   script.
-    function buy(index) {
-      alert(`Your purchased Item: ${index+1}`);
+    function dispatch(path){
+      window.location.href = path;
     }
-
-
